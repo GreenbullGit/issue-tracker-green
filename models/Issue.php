@@ -35,7 +35,7 @@ class Issue extends \yii\db\ActiveRecord
             [['NAME'], 'required'],
             [['DESCRIPTION'], 'string'],
             [['NAME'], 'string', 'max' => 30],
-            [['STATUS', 'PRIORITY'], 'string', 'max' => 12],
+            [['STATUS', 'PRIORITY'], 'string', 'max' => 30],
             [['URL'], 'string', 'max' => 40],
         ];
     }

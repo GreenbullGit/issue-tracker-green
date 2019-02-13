@@ -55,4 +55,11 @@ class Issue extends \yii\db\ActiveRecord
             'url' => 'URL',
         ];
     }
+
+    public function relations()
+    {
+        return array(
+            'parent'=>array(self::BELONGS_TO, 'Issue', 'parent_id'),
+        );
+    }
 }

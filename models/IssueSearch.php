@@ -40,12 +40,12 @@ class IssueSearch extends Issue
      */
     public function search($params, $parentId=NULL)
     {
-        if($parentId){
-        $query = Issue::find()->where(['parent_id' => $parentId])->andWhere(['<>','status',"Closed"]);
-        }
-        else{
-        $query = Issue::find()->where(['parent_id' => NULL])->andWhere(['<>','status',"Closed"]);
-        }
+        // if($parentId){
+        //    $query = Issue::find()->where(['parent_id' => $parentId])->andWhere(['<>','status',"Closed"]);
+        // }
+        // else{
+        //    $query = Issue::find()->where(['parent_id' => NULL])->andWhere(['<>','status',"Closed"]);
+        // }
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

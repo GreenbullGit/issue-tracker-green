@@ -38,14 +38,16 @@ class IssueSearch extends Issue
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $parentId=NULL)
+    public function search($params, $parentId=null)
     {
-        // if($parentId){
-        //    $query = Issue::find()->where(['parent_id' => $parentId])->andWhere(['<>','status',"Closed"]);
-        // }
-        // else{
-        //    $query = Issue::find()->where(['parent_id' => NULL])->andWhere(['<>','status',"Closed"]);
-        // }
+        if($parentId){
+            // inline subissue listing
+           $query = Issue::find()->where(['parent_id' => $parentId])->andWhere(['<>','status',"Closed"]);
+        }
+        else{
+            // main issue listing
+           $query = Issue::find()->where(['parent_id' => NULL])->andWhere(['<>','status',"Closed"]);
+        }
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

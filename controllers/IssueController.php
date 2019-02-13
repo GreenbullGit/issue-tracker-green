@@ -72,8 +72,7 @@ class IssueController extends Controller
         }
 
         $availableParents=Issue::find()->where(['parent_id' => null])->andWhere(['<>','status',"Closed"])->all();
-        $parentData=ArrayHelper::map($availableParents,'id','name');
-        $parentData= array(null => "") + $parentData;
+        $parentData=$this->makeParentData($availableParents);
 
         return $this->render('create', [
             'model' => $model,
@@ -97,8 +96,7 @@ class IssueController extends Controller
         }
 
         $availableParents=Issue::find()->where(['parent_id' => null])->andWhere(['<>','id',$model->id])->andWhere(['<>','status',"Closed"])->all();
-        $parentData=ArrayHelper::map($availableParents,'id','name');
-        $parentData= array(null => "") + $parentData;
+        $parentData=$this->makeParentData($availableParents);
 
         return $this->render('update', [
             'model' => $model,
@@ -134,5 +132,13 @@ class IssueController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    private function makeParentData($availableParents)
+    {
+        $parentData=ArrayHelper::map($availableParents,'id','name');
+        $parentData= array(null => "") + $parentData;
+
+        return $parentData;
     }
 }

@@ -33,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'detail' => function($model, $key, $index, $column){
               $searchModel = new IssueSearch();
-              $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $parentId=$model->ID);
+              $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $parentId=$model->id);
 
               return $this->render('subissue', [
                   'dataProvider' => $dataProvider,
               ]);
             },
             'disabled' => function ($model, $key, $index){
-              if(Issue::find()->where(['PARENT_ID' => $model->ID])->count()>0){
+              if(Issue::find()->where(['parent_id' => $model->id])->count()>0){
                 return False;
               }
               else{
@@ -48,13 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
               }
             }
             ],
-            'ID',
-            //'PARENT_ID',
-            'NAME',
-            'DESCRIPTION:ntext',
-            'STATUS',
-            'PRIORITY',
-            'URL:url',
+            'id',
+            //'parent_id',
+            'name',
+            'description:ntext',
+            'status',
+            'priority',
+            'url:url',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

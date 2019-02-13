@@ -15,13 +15,13 @@ use yii\helpers\ArrayHelper;
     //echo implode(" ", $parentData);
      ?>
 
-    <?= $form->field($model, 'PARENT_ID')->dropdownList($parentData) ?>
+    <?= $form->field($model, 'parent_id')->dropdownList($parentData) ?>
 
-    <?= $form->field($model, 'NAME')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'DESCRIPTION')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'STATUS')->dropdownList([
+    <?= $form->field($model, 'status')->dropdownList([
         "New" => 'New',
         "In progress" => 'In progress',
         "Waiting for response" => 'Waiting for response',
@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
     ],
     ) ?>
 
-    <?= $form->field($model, 'PRIORITY')->dropdownList([
+    <?= $form->field($model, 'priority')->dropdownList([
         "Very low" => 'Very low',
         "Low" => 'Low',
         "Normal" => 'Normal',
@@ -40,7 +40,7 @@ use yii\helpers\ArrayHelper;
     ],
     ) ?>
 
-    <?= $form->field($model, 'URL')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -68,11 +68,11 @@ class IssueController extends Controller
         $model = new Issue();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $availableParents=Issue::find()->where(['PARENT_ID' => null])->andWhere(['<>','STATUS',"Closed"])->all();
-        $parentData=ArrayHelper::map($availableParents,'ID','NAME');
+        $availableParents=Issue::find()->where(['parent_id' => null])->andWhere(['<>','status',"Closed"])->all();
+        $parentData=ArrayHelper::map($availableParents,'id','name');
         $parentData= array(null => "") + $parentData;
 
         return $this->render('create', [
@@ -93,11 +93,11 @@ class IssueController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $availableParents=Issue::find()->where(['PARENT_ID' => null])->andWhere(['<>','ID',$model->ID])->andWhere(['<>','STATUS',"Closed"])->all();
-        $parentData=ArrayHelper::map($availableParents,'ID','NAME');
+        $availableParents=Issue::find()->where(['parent_id' => null])->andWhere(['<>','id',$model->id])->andWhere(['<>','status',"Closed"])->all();
+        $parentData=ArrayHelper::map($availableParents,'id','name');
         $parentData= array(null => "") + $parentData;
 
         return $this->render('update', [

@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "issue".
  *
- * @property int $ID
- * @property int $PARENT_ID
- * @property string $NAME
- * @property string $DESCRIPTION
- * @property string $STATUS
- * @property string $PRIORITY
+ * @property int $id
+ * @property int $parent_id
+ * @property string $name
+ * @property string $description
+ * @property string $status
+ * @property string $priority
  * @property string $URL
  */
 class Issue extends \yii\db\ActiveRecord
@@ -31,12 +31,12 @@ class Issue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['PARENT_ID'], 'integer'],
-            [['NAME'], 'required'],
-            [['DESCRIPTION'], 'string'],
-            [['NAME'], 'string', 'max' => 30],
-            [['STATUS', 'PRIORITY'], 'string', 'max' => 30],
-            [['URL'], 'string', 'max' => 40],
+            [['parent_id'], 'integer'],
+            [['name'], 'required'],
+            [['description'], 'string'],
+            [['name'], 'string', 'max' => 30],
+            [['status', 'priority'], 'string', 'max' => 30],
+            [['url'], 'string', 'max' => 40],
         ];
     }
 
@@ -46,13 +46,13 @@ class Issue extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'PARENT_ID' => 'Parent Issue',
-            'NAME' => 'Name',
-            'DESCRIPTION' => 'Description',
-            'STATUS' => 'Status',
-            'PRIORITY' => 'Priority',
-            'URL' => 'URL',
+            'id' => 'ID',
+            'parent_id' => 'Parent Issue',
+            'name' => 'Name',
+            'description' => 'Description',
+            'status' => 'Status',
+            'priority' => 'Priority',
+            'url' => 'URL',
         ];
     }
 }

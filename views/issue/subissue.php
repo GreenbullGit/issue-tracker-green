@@ -11,17 +11,17 @@ use app\models\IssueSearch;
 <div class="issue-index">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'ID',
-            //'PARENT_ID',
-            'NAME',
-            'DESCRIPTION:ntext',
-            'STATUS',
-            'PRIORITY',
-            'URL:url',
+            //'id',
+            //'parent_id',
+            'name',
+            'description:ntext',
+            'status',
+            'priority',
+            'url:url',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

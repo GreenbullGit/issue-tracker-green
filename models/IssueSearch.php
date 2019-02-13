@@ -17,8 +17,8 @@ class IssueSearch extends Issue
     public function rules()
     {
         return [
-            [['ID', 'PARENT_ID'], 'integer'],
-            [['NAME', 'DESCRIPTION', 'STATUS', 'PRIORITY', 'URL'], 'safe'],
+            [['id', 'parent_id'], 'integer'],
+            [['name', 'description', 'status', 'priority', 'url'], 'safe'],
         ];
     }
 
@@ -41,10 +41,10 @@ class IssueSearch extends Issue
     public function search($params, $parentId=NULL)
     {
         if($parentId){
-        $query = Issue::find()->where(['PARENT_ID' => $parentId])->andWhere(['<>','STATUS',"Closed"]);
+        $query = Issue::find()->where(['parent_id' => $parentId])->andWhere(['<>','status',"Closed"]);
         }
         else{
-        $query = Issue::find()->where(['PARENT_ID' => NULL])->andWhere(['<>','STATUS',"Closed"]);
+        $query = Issue::find()->where(['parent_id' => NULL])->andWhere(['<>','status',"Closed"]);
         }
         // add conditions that should always apply here
 
@@ -62,15 +62,15 @@ class IssueSearch extends Issue
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'ID' => $this->ID,
-            'PARENT_ID' => $this->PARENT_ID,
+            'id' => $this->id,
+            'parent_id' => $this->parent_id,
         ]);
 
-        $query->andFilterWhere(['like', 'NAME', $this->NAME])
-            ->andFilterWhere(['like', 'DESCRIPTION', $this->DESCRIPTION])
-            ->andFilterWhere(['like', 'STATUS', $this->STATUS])
-            ->andFilterWhere(['like', 'PRIORITY', $this->PRIORITY])
-            ->andFilterWhere(['like', 'URL', $this->URL]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'priority', $this->priority])
+            ->andFilterWhere(['like', 'url', $this->url]);
 
         return $dataProvider;
     }
